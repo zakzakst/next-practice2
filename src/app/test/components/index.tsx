@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { postLike } from "@/api/like";
 import { getPost } from "@/api/post";
+import { getPosts, GetPostsParams } from "@/api/posts";
 
 const url = "https://jsonplaceholder.typicode.com/todos/1";
 
@@ -43,6 +44,15 @@ export const TestComponent = () => {
     }
   };
 
+  const handleGetPosts = async ({ page, orderBy }: GetPostsParams) => {
+    try {
+      const data = await getPosts({ page, orderBy });
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div>
       <p>{test}</p>
@@ -55,6 +65,23 @@ export const TestComponent = () => {
         <button onClick={() => handleGetPost(10)}>Get Post</button>
         <button onClick={() => handleGetPost(404)}>Get Post 404</button>
         <button onClick={() => handleGetPost(503)}>Get Post 503</button>
+      </div>
+      <div>
+        <button
+          onClick={() => handleGetPosts({ page: 10, orderBy: "starCount" })}
+        >
+          Get Post
+        </button>
+        <button
+          onClick={() => handleGetPosts({ page: 404, orderBy: "starCount" })}
+        >
+          Get Post 404
+        </button>
+        <button
+          onClick={() => handleGetPosts({ page: 503, orderBy: "starCount" })}
+        >
+          Get Post 503
+        </button>
       </div>
     </div>
   );
