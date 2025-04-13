@@ -1,11 +1,11 @@
 import { defaultHeaders, host } from "..";
-import { PostLikeRequest, PostLikeResponse, PostLikeError } from "./type";
+import { PostLoginRequest, PostLoginResponse, PostLoginError } from "./type";
 
-const path = () => host(`/like`);
+const path = () => host(`/login`);
 
-export const postLike = async (
-  request: PostLikeRequest
-): Promise<PostLikeResponse> => {
+export const postLogin = async (
+  request: PostLoginRequest
+): Promise<PostLoginResponse> => {
   try {
     const res = await fetch(path(), {
       method: "POST",
@@ -14,10 +14,10 @@ export const postLike = async (
     });
     if (!res.ok) {
       // TODO: この辺の処理自信ない。。
-      const errorData: PostLikeError = await res.json();
+      const errorData: PostLoginError = await res.json();
       throw new Error(errorData.message || "エラーが発生しました");
     }
-    const data: PostLikeResponse = await res.json();
+    const data: PostLoginResponse = await res.json();
     return data;
   } catch (err) {
     throw err;

@@ -26,8 +26,8 @@ export const TestComponent = () => {
 
   const handlePostLike = async (postId: number) => {
     try {
-      const data = await postLike({ postId });
-      console.log(data?.id);
+      const data = await postLike({ postId, userId: 1 });
+      console.log(data.id);
     } catch (err) {
       console.error(err);
     }
