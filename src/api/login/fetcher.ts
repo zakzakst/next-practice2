@@ -1,7 +1,7 @@
 import { defaultHeaders, host } from "..";
 import { PostLoginRequest, PostLoginResponse, PostLoginError } from "./type";
 
-const path = () => host(`/login`);
+const path = () => host("/login");
 
 export const postLogin = async (
   request: PostLoginRequest

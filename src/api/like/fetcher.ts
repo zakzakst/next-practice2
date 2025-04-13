@@ -1,7 +1,7 @@
 import { defaultHeaders, host } from "..";
 import { PostLikeRequest, PostLikeResponse, PostLikeError } from "./type";
 
-const path = () => host(`/like`);
+const path = () => host("/like");
 
 export const postLike = async (
   request: PostLikeRequest
