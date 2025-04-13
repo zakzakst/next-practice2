@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { postLike } from "@/api/like";
+import { getPost } from "@/api/post";
 
 const url = "https://jsonplaceholder.typicode.com/todos/1";
 
@@ -33,12 +34,28 @@ export const TestComponent = () => {
     }
   };
 
+  const handleGetPost = async (postId: number) => {
+    try {
+      const data = await getPost({ postId });
+      console.log(data.title);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div>
       <p>{test}</p>
-      <button onClick={() => handlePostLike(10)}>Post Like</button>
-      <button onClick={() => handlePostLike(404)}>Post Like 404</button>
-      <button onClick={() => handlePostLike(503)}>Post Like 503</button>
+      <div>
+        <button onClick={() => handlePostLike(10)}>Post Like</button>
+        <button onClick={() => handlePostLike(404)}>Post Like 404</button>
+        <button onClick={() => handlePostLike(503)}>Post Like 503</button>
+      </div>
+      <div>
+        <button onClick={() => handleGetPost(10)}>Get Post</button>
+        <button onClick={() => handleGetPost(404)}>Get Post 404</button>
+        <button onClick={() => handleGetPost(503)}>Get Post 503</button>
+      </div>
     </div>
   );
 };
