@@ -1,53 +1,78 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { postLike } from "@/api/like";
+import { postLike, PostLikeRequest } from "@/api/like";
+import { postLogin, PostLoginRequest } from "@/api/login";
 import { getPost } from "@/api/post";
 import { getPosts, GetPostsParams } from "@/api/posts";
+import { postMyPost, PostMyPostRequest } from "@/api/myPost";
 
-const url = "https://jsonplaceholder.typicode.com/todos/1";
+const PostLikeRequestBase: PostLikeRequest = {
+  postId: 10,
+  userId: 1,
+};
+
+const PostLoginRequestBase: PostLoginRequest = {
+  email: "yamada@mail.com",
+  password: "password10",
+};
+
+const GetPostsParamsBase: GetPostsParams = { page: 10, orderBy: "starCount" };
+
+const PostMyPostRequestBase: PostMyPostRequest = {
+  title: "10",
+  description: "概要",
+  body: "内容",
+  published: false,
+  imageUrl: "画像URL",
+};
 
 export const TestComponent = () => {
-  const [test, setTest] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchTest = async () => {
-      try {
-        const res = await fetch(url);
-        if (!res.ok) {
-          throw new Error("Failed to fetch");
-        }
-        const json = await res.json();
-        setTest(json.message);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchTest();
-  }, []);
-
-  const handlePostLike = async (postId: number) => {
+  const handlePostLike = async (num: number) => {
     try {
-      const data = await postLike({ postId, userId: 1 });
+      const data = await postLike({ ...PostLikeRequestBase, postId: num });
       console.log(data.id);
     } catch (err) {
       console.error(err);
     }
   };
 
-  const handleGetPost = async (postId: number) => {
+  const handlePostLogin = async (num: number) => {
     try {
-      const data = await getPost({ postId });
+      const data = await postLogin({
+        ...PostLoginRequestBase,
+        password: `password${num}`,
+      });
+      console.log(data.name);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleGetPost = async (num: number) => {
+    try {
+      const data = await getPost({ postId: num });
       console.log(data.title);
     } catch (err) {
       console.error(err);
     }
   };
 
-  const handleGetPosts = async ({ page, orderBy }: GetPostsParams) => {
+  const handleGetPosts = async (num: number) => {
     try {
-      const data = await getPosts({ page, orderBy });
+      const data = await getPosts({ ...GetPostsParamsBase, page: num });
       console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handlePostMyPost = async (num: number) => {
+    try {
+      const data = await postMyPost({
+        ...PostMyPostRequestBase,
+        title: num.toString(),
+      });
+      console.log(data.id);
     } catch (err) {
       console.error(err);
     }
@@ -55,11 +80,15 @@ export const TestComponent = () => {
 
   return (
     <div>
-      <p>{test}</p>
       <div>
         <button onClick={() => handlePostLike(10)}>Post Like</button>
         <button onClick={() => handlePostLike(404)}>Post Like 404</button>
         <button onClick={() => handlePostLike(503)}>Post Like 503</button>
+      </div>
+      <div>
+        <button onClick={() => handlePostLogin(10)}>Login</button>
+        <button onClick={() => handlePostLogin(404)}>Login 404</button>
+        <button onClick={() => handlePostLogin(503)}>Login 503</button>
       </div>
       <div>
         <button onClick={() => handleGetPost(10)}>Get Post</button>
@@ -67,21 +96,14 @@ export const TestComponent = () => {
         <button onClick={() => handleGetPost(503)}>Get Post 503</button>
       </div>
       <div>
-        <button
-          onClick={() => handleGetPosts({ page: 10, orderBy: "starCount" })}
-        >
-          Get Post
-        </button>
-        <button
-          onClick={() => handleGetPosts({ page: 404, orderBy: "starCount" })}
-        >
-          Get Post 404
-        </button>
-        <button
-          onClick={() => handleGetPosts({ page: 503, orderBy: "starCount" })}
-        >
-          Get Post 503
-        </button>
+        <button onClick={() => handleGetPosts(10)}>Get Post</button>
+        <button onClick={() => handleGetPosts(404)}>Get Post 404</button>
+        <button onClick={() => handleGetPosts(503)}>Get Post 503</button>
+      </div>
+      <div>
+        <button onClick={() => handlePostMyPost(10)}>Post MyPost</button>
+        <button onClick={() => handlePostMyPost(404)}>Post MyPost 404</button>
+        <button onClick={() => handlePostMyPost(503)}>Post MyPost 503</button>
       </div>
     </div>
   );
