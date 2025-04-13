@@ -25,14 +25,20 @@ export const TestComponent = () => {
   }, []);
 
   const handlePostLike = async (postId: number) => {
-    const data = await postLike({ postId });
-    console.log(data?.id);
+    try {
+      const data = await postLike({ postId });
+      console.log(data?.id);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
     <div>
       <p>{test}</p>
       <button onClick={() => handlePostLike(10)}>Post Like</button>
+      <button onClick={() => handlePostLike(404)}>Post Like 404</button>
+      <button onClick={() => handlePostLike(503)}>Post Like 503</button>
     </div>
   );
 };

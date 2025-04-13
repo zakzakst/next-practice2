@@ -10,3 +10,7 @@ export type PostLikeRequest = z.infer<typeof PostLikeRequestSchema>;
 export type PostLikeResponse = {
   id: number;
 };
+
+export type PostLikeError = {
+  message: string;
+};

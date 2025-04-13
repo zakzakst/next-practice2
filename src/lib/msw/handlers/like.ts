@@ -1,10 +1,22 @@
-import { http, HttpResponse } from "msw";
-import { PostLikeResponseMock } from "@/mocks/like";
+import { http, HttpResponse, PathParams } from "msw";
+import { PostLikeRequest, PostLikeResponse, PostLikeError } from "@/api/like";
+import { PostLikeResponseMock, PostLikeErrorMock } from "@/mocks/like";
 
 const url = "http://localhost:3000/api/like";
 
-export const postLikeHandler = http.post(url, async ({ request }) => {
+// NOTE: このHandlerではPathParamsの部分使わなかったけど、他で利用する場面あると思うので覚えておく
+export const postLikeHandler = http.post<
+  PathParams,
+  PostLikeRequest,
+  PostLikeResponse | PostLikeError
+>(url, async ({ request }) => {
   const data = await request.json();
-  console.log("post request", data);
+  console.log(`postId: ${data.postId}`);
+  if (data.postId === 404) {
+    return HttpResponse.json(PostLikeErrorMock, { status: 404 });
+  }
+  if (data.postId === 503) {
+    return HttpResponse.json(PostLikeErrorMock, { status: 503 });
+  }
   return HttpResponse.json(PostLikeResponseMock);
 });
