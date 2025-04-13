@@ -3,23 +3,23 @@ import { PostLikeRequest, PostLikeResponse } from "./type";
 
 export const path = () => host(`/like`);
 
-// TODO: エラーハンドリングの方法調べる
 export const postLike = async (
   request: PostLikeRequest
-): Promise<PostLikeResponse | undefined> => {
+): Promise<PostLikeResponse> => {
   try {
     const res = await fetch(path(), {
       method: "POST",
       headers: defaultHeaders,
       body: JSON.stringify(request),
     });
-    const data = await res.json();
     if (!res.ok) {
-      // throw new Error(data.error)
-      console.error("エラー");
+      // TODO: この辺の処理自信ない。。
+      const errorData = await res.json();
+      throw new Error(errorData.message || "エラーが発生しました");
     }
+    const data: PostLikeResponse = await res.json();
     return data;
   } catch (err) {
-    console.error(err);
+    throw err;
   }
 };
