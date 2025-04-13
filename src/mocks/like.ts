@@ -5,5 +5,5 @@ export const PostLikeResponseMock: PostLikeResponse = {
 };
 
 export const PostLikeErrorMock: PostLikeError = {
-  message: "エラーメッセージのモック",
+  message: "いいねに失敗しました",
 };
