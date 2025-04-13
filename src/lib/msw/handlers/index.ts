@@ -1,11 +1,5 @@
-import { http, HttpResponse, type RequestHandler } from "msw";
+import type { RequestHandler } from "msw";
+import { helloHandler } from "./hello";
+import { postLikeHandler } from "./like";
 
-const url = "https://jsonplaceholder.typicode.com/todos/1";
-
-const helloHandler = http.get(url, () => {
-  return HttpResponse.json({
-    message: "Hello, world!",
-  });
-});
-
-export const handlers: RequestHandler[] = [helloHandler];
+export const handlers: RequestHandler[] = [helloHandler, postLikeHandler];
