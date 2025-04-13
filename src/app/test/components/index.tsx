@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { postLike } from "@/api/like";
 
 const url = "https://jsonplaceholder.typicode.com/todos/1";
 
@@ -23,5 +24,15 @@ export const TestComponent = () => {
     fetchTest();
   }, []);
 
-  return <div>{test}</div>;
+  const handlePostLike = async (postId: number) => {
+    const data = await postLike({ postId });
+    console.log(data?.id);
+  };
+
+  return (
+    <div>
+      <p>{test}</p>
+      <button onClick={() => handlePostLike(10)}>Post Like</button>
+    </div>
+  );
 };
