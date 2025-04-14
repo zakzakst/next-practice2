@@ -12,7 +12,7 @@ import {
   deleteMyPostHandler,
 } from "./myPost";
 import { getMyPostsHandler } from "./myPosts";
-import { getMyProfileHandler } from "./myProfile";
+import { getMyProfileHandler, putMyProfileHandler } from "./myProfile";
 
 export const handlers: RequestHandler[] = [
   postLikeHandler,
@@ -25,4 +25,5 @@ export const handlers: RequestHandler[] = [
   deleteMyPostHandler,
   getMyPostsHandler,
   getMyProfileHandler,
+  putMyProfileHandler,
 ];

@@ -3,10 +3,15 @@ import {
   // GetMyProfileParams,
   GetMyProfileResponse,
   GetMyProfileError,
+  PutMyProfileRequest,
+  PutMyProfileResponse,
+  PutMyProfileError,
 } from "@/api/myProfile";
 import {
   GetMyProfileResponseMock,
   GetMyProfileErrorMock,
+  PutMyProfileResponseMock,
+  PutMyProfileErrorMock,
 } from "@/mocks/myProfile";
 
 const url = "http://localhost:3000/api/my-profile";
@@ -28,4 +33,20 @@ export const getMyProfileHandler = http.get<
     return HttpResponse.json(GetMyProfileErrorMock, { status: 503 });
   }
   return HttpResponse.json(GetMyProfileResponseMock);
+});
+
+export const putMyProfileHandler = http.put<
+  PathParams,
+  PutMyProfileRequest,
+  PutMyProfileResponse | PutMyProfileError
+>(url, async ({ request }) => {
+  const data = await request.json();
+  console.log(`id: ${data.id}`);
+  if (data.id === 404) {
+    return HttpResponse.json(PutMyProfileErrorMock, { status: 404 });
+  }
+  if (data.id === 503) {
+    return HttpResponse.json(PutMyProfileErrorMock, { status: 503 });
+  }
+  return HttpResponse.json(PutMyProfileResponseMock);
 });
