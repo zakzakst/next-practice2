@@ -9,6 +9,8 @@ import {
   GetMyPostParams,
   postMyPost,
   PostMyPostRequest,
+  putMyPost,
+  PutMyPostRequest,
   deleteMyPost,
 } from "@/api/myPost";
 
@@ -24,17 +26,26 @@ const PostLoginRequestBase: PostLoginRequest = {
 
 const GetPostsParamsBase: GetPostsParams = { page: 10, orderBy: "starCount" };
 
+const GetMyPostParamsBase: GetMyPostParams = {
+  id: 10,
+  authorId: 1,
+};
+
 const PostMyPostRequestBase: PostMyPostRequest = {
   title: "10",
   description: "概要",
   body: "内容",
   published: false,
   imageUrl: "画像URL",
+  authorId: 1,
 };
 
-const GetMyPostParamsBase: GetMyPostParams = {
-  id: 10,
-  authorId: 1,
+const PutMyPostRequestBase: PutMyPostRequest = {
+  title: "10",
+  description: "概要",
+  body: "内容",
+  published: false,
+  imageUrl: "画像URL",
 };
 
 export const TestComponent = () => {
@@ -101,6 +112,18 @@ export const TestComponent = () => {
     }
   };
 
+  const handlePutMyPost = async (num: number) => {
+    try {
+      const data = await putMyPost({
+        ...PutMyPostRequestBase,
+        title: num.toString(),
+      });
+      console.log(data.id);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const handleDeleteMyPost = async (num: number) => {
     try {
       const data = await deleteMyPost({
@@ -143,6 +166,11 @@ export const TestComponent = () => {
         <button onClick={() => handlePostMyPost(10)}>Post MyPost</button>
         <button onClick={() => handlePostMyPost(404)}>Post MyPost 404</button>
         <button onClick={() => handlePostMyPost(503)}>Post MyPost 503</button>
+      </div>
+      <div>
+        <button onClick={() => handlePutMyPost(10)}>Put MyPost</button>
+        <button onClick={() => handlePutMyPost(404)}>Put MyPost 404</button>
+        <button onClick={() => handlePutMyPost(503)}>Put MyPost 503</button>
       </div>
       <div>
         <button onClick={() => handleDeleteMyPost(10)}>Delete MyPost</button>
