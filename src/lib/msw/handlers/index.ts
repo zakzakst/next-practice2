@@ -11,6 +11,7 @@ import {
   putMyPostHandler,
   deleteMyPostHandler,
 } from "./myPost";
+import { getMyPostsHandler } from "./myPosts";
 
 export const handlers: RequestHandler[] = [
   postLikeHandler,
@@ -21,4 +22,5 @@ export const handlers: RequestHandler[] = [
   postMyPostHandler,
   putMyPostHandler,
   deleteMyPostHandler,
+  getMyPostsHandler,
 ];
