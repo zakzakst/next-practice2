@@ -3,6 +3,9 @@ import {
   GetMyProfileParams,
   GetMyProfileResponse,
   GetMyProfileError,
+  PutMyProfileRequest,
+  PutMyProfileResponse,
+  PutMyProfileError,
 } from "./type";
 
 const path = () => host("/my-profile");
@@ -26,6 +29,26 @@ export const getMyProfile = async (
       throw new Error(errorData.message || "エラーが発生しました");
     }
     const data: GetMyProfileResponse = await res.json();
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const putMyProfile = async (
+  request: PutMyProfileRequest
+): Promise<PutMyProfileResponse> => {
+  try {
+    const res = await fetch(path(), {
+      method: "PUT",
+      headers: defaultHeaders,
+      body: JSON.stringify(request),
+    });
+    if (!res.ok) {
+      const errorData: PutMyProfileError = await res.json();
+      throw new Error(errorData.message || "エラーが発生しました");
+    }
+    const data: PutMyProfileResponse = await res.json();
     return data;
   } catch (err) {
     throw err;

@@ -14,7 +14,11 @@ import {
   deleteMyPost,
 } from "@/api/myPost";
 import { getMyPosts, GetMyPostsParams } from "@/api/myPosts";
-import { getMyProfile } from "@/api/myProfile";
+import {
+  getMyProfile,
+  putMyProfile,
+  PutMyProfileRequest,
+} from "@/api/myProfile";
 
 const PostLikeRequestBase: PostLikeRequest = {
   postId: 10,
@@ -54,6 +58,15 @@ const GetMyPostsParamsBase: GetMyPostsParams = {
   page: 10,
   authorId: 1,
   published: true,
+};
+
+const PutMyProfileRequestBase: PutMyProfileRequest = {
+  id: 10,
+  name: "山田太郎",
+  bio: "フロントエンドエンジニア。TypeScript と UIコンポーネントのテストに興味があります。",
+  twitterAccount: "taro-yamada",
+  githubAccount: "taro-yamada",
+  imageUrl: "https://picsum.photos/id/237/300/300",
 };
 
 export const TestComponent = () => {
@@ -161,6 +174,18 @@ export const TestComponent = () => {
     }
   };
 
+  const handlePutMyProfile = async (num: number) => {
+    try {
+      const data = await putMyProfile({
+        ...PutMyProfileRequestBase,
+        id: num,
+      });
+      console.log(data.id);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div>
       <div>
@@ -219,6 +244,15 @@ export const TestComponent = () => {
         </button>
         <button onClick={() => handleGetMyProfile(503)}>
           Get MyProfile 503
+        </button>
+      </div>
+      <div>
+        <button onClick={() => handlePutMyProfile(10)}>Put MyProfile</button>
+        <button onClick={() => handlePutMyProfile(404)}>
+          Put MyProfile 404
+        </button>
+        <button onClick={() => handlePutMyProfile(503)}>
+          Put MyProfile 503
         </button>
       </div>
     </div>

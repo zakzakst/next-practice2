@@ -1,4 +1,9 @@
-import { GetMyProfileResponse, GetMyProfileError } from "@/api/myProfile";
+import {
+  GetMyProfileResponse,
+  GetMyProfileError,
+  PutMyProfileResponse,
+  PutMyProfileError,
+} from "@/api/myProfile";
 
 export const GetMyProfileResponseMock: GetMyProfileResponse = {
   id: 1,
@@ -13,4 +18,14 @@ export const GetMyProfileResponseMock: GetMyProfileResponse = {
 
 export const GetMyProfileErrorMock: GetMyProfileError = {
   message: "プロフィールの取得に失敗しました",
+};
+
+export const PutMyProfileResponseMock: PutMyProfileResponse = {
+  id: 1,
+  name: "山田太郎",
+  imageUrl: "https://picsum.photos/id/237/300/300",
+};
+
+export const PutMyProfileErrorMock: PutMyProfileError = {
+  message: "プロフィールの更新に失敗しました",
 };
