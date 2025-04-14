@@ -3,6 +3,8 @@ import {
   GetMyPostError,
   PostMyPostResponse,
   PostMyPostError,
+  DeleteMyPostResponse,
+  DeleteMyPostError,
 } from "@/api/myPost/type";
 
 export const GetMyPostResponseMock: GetMyPostResponse = {
@@ -25,4 +27,12 @@ export const PostMyPostResponseMock: PostMyPostResponse = {
 
 export const PostMyPostErrorMock: PostMyPostError = {
   message: "記事の更新に失敗しました",
+};
+
+export const DeleteMyPostResponseMock: DeleteMyPostResponse = {
+  id: 1,
+};
+
+export const DeleteMyPostErrorMock: DeleteMyPostError = {
+  message: "記事の削除に失敗しました",
 };

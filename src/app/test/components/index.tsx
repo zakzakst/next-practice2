@@ -9,6 +9,7 @@ import {
   GetMyPostParams,
   postMyPost,
   PostMyPostRequest,
+  deleteMyPost,
 } from "@/api/myPost";
 
 const PostLikeRequestBase: PostLikeRequest = {
@@ -100,6 +101,17 @@ export const TestComponent = () => {
     }
   };
 
+  const handleDeleteMyPost = async (num: number) => {
+    try {
+      const data = await deleteMyPost({
+        id: num,
+      });
+      console.log(data.id);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div>
       <div>
@@ -131,6 +143,15 @@ export const TestComponent = () => {
         <button onClick={() => handlePostMyPost(10)}>Post MyPost</button>
         <button onClick={() => handlePostMyPost(404)}>Post MyPost 404</button>
         <button onClick={() => handlePostMyPost(503)}>Post MyPost 503</button>
+      </div>
+      <div>
+        <button onClick={() => handleDeleteMyPost(10)}>Delete MyPost</button>
+        <button onClick={() => handleDeleteMyPost(404)}>
+          Delete MyPost 404
+        </button>
+        <button onClick={() => handleDeleteMyPost(503)}>
+          Delete MyPost 503
+        </button>
       </div>
     </div>
   );

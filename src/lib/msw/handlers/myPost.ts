@@ -6,14 +6,21 @@ import {
   PostMyPostRequest,
   PostMyPostResponse,
   PostMyPostError,
+  DeleteMyPostRequest,
+  DeleteMyPostResponse,
+  DeleteMyPostError,
 } from "@/api/myPost";
 import {
   GetMyPostResponseMock,
   GetMyPostErrorMock,
   PostMyPostResponseMock,
   PostMyPostErrorMock,
+  DeleteMyPostResponseMock,
+  DeleteMyPostErrorMock,
 } from "@/mocks/myPost";
 
+// TODO: PathParamsでのIDを受け取る
+// https://mswjs.io/docs/best-practices/typescript/#http-handlers
 const url = "http://localhost:3000/api/my-post";
 
 export const getMyPostHandler = http.get<
@@ -48,4 +55,20 @@ export const postMyPostHandler = http.post<
     return HttpResponse.json(PostMyPostErrorMock, { status: 503 });
   }
   return HttpResponse.json(PostMyPostResponseMock);
+});
+
+export const deleteMyPostHandler = http.delete<
+  PathParams,
+  DeleteMyPostRequest,
+  DeleteMyPostResponse | DeleteMyPostError
+>(url, async ({ request }) => {
+  const data = await request.json();
+  console.log(`id: ${data.id}`);
+  if (data.id === 404) {
+    return HttpResponse.json(DeleteMyPostErrorMock, { status: 404 });
+  }
+  if (data.id === 503) {
+    return HttpResponse.json(DeleteMyPostErrorMock, { status: 503 });
+  }
+  return HttpResponse.json(DeleteMyPostResponseMock);
 });
