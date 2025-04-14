@@ -3,9 +3,9 @@ import {
   GetMyPostParams,
   GetMyPostResponse,
   GetMyPostError,
-  PostMyPostRequest,
-  PostMyPostResponse,
-  PostMyPostError,
+  PutMyPostRequest,
+  PutMyPostResponse,
+  PutMyPostError,
   DeleteMyPostRequest,
   DeleteMyPostResponse,
   DeleteMyPostError,
@@ -40,9 +40,9 @@ export const getMyPost = async (
   }
 };
 
-export const postMyPost = async (
-  request: PostMyPostRequest
-): Promise<PostMyPostResponse> => {
+export const putMyPost = async (
+  request: PutMyPostRequest
+): Promise<PutMyPostResponse> => {
   try {
     const res = await fetch(path(), {
       method: "POST",
@@ -50,10 +50,10 @@ export const postMyPost = async (
       body: JSON.stringify(request),
     });
     if (!res.ok) {
-      const errorData: PostMyPostError = await res.json();
+      const errorData: PutMyPostError = await res.json();
       throw new Error(errorData.message || "エラーが発生しました");
     }
-    const data: PostMyPostResponse = await res.json();
+    const data: PutMyPostResponse = await res.json();
     return data;
   } catch (err) {
     throw err;

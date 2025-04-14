@@ -1,8 +1,8 @@
 import {
   GetMyPostResponse,
   GetMyPostError,
-  PostMyPostResponse,
-  PostMyPostError,
+  PutMyPostResponse,
+  PutMyPostError,
   DeleteMyPostResponse,
   DeleteMyPostError,
 } from "@/api/myPost/type";
@@ -21,11 +21,11 @@ export const GetMyPostErrorMock: GetMyPostError = {
   message: "記事の取得に失敗しました",
 };
 
-export const PostMyPostResponseMock: PostMyPostResponse = {
+export const PutMyPostResponseMock: PutMyPostResponse = {
   id: 1,
 };
 
-export const PostMyPostErrorMock: PostMyPostError = {
+export const PutMyPostErrorMock: PutMyPostError = {
   message: "記事の更新に失敗しました",
 };
 

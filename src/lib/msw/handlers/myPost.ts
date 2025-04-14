@@ -3,9 +3,9 @@ import {
   // GetMyPostParams,
   GetMyPostResponse,
   GetMyPostError,
-  PostMyPostRequest,
-  PostMyPostResponse,
-  PostMyPostError,
+  PutMyPostRequest,
+  PutMyPostResponse,
+  PutMyPostError,
   DeleteMyPostRequest,
   DeleteMyPostResponse,
   DeleteMyPostError,
@@ -13,8 +13,8 @@ import {
 import {
   GetMyPostResponseMock,
   GetMyPostErrorMock,
-  PostMyPostResponseMock,
-  PostMyPostErrorMock,
+  PutMyPostResponseMock,
+  PutMyPostErrorMock,
   DeleteMyPostResponseMock,
   DeleteMyPostErrorMock,
 } from "@/mocks/myPost";
@@ -41,20 +41,20 @@ export const getMyPostHandler = http.get<
   return HttpResponse.json(GetMyPostResponseMock);
 });
 
-export const postMyPostHandler = http.post<
+export const putMyPostHandler = http.post<
   PathParams,
-  PostMyPostRequest,
-  PostMyPostResponse | PostMyPostError
+  PutMyPostRequest,
+  PutMyPostResponse | PutMyPostError
 >(url, async ({ request }) => {
   const data = await request.json();
   console.log(`title: ${data.title}`);
   if (data.title === "404") {
-    return HttpResponse.json(PostMyPostErrorMock, { status: 404 });
+    return HttpResponse.json(PutMyPostErrorMock, { status: 404 });
   }
   if (data.title === "503") {
-    return HttpResponse.json(PostMyPostErrorMock, { status: 503 });
+    return HttpResponse.json(PutMyPostErrorMock, { status: 503 });
   }
-  return HttpResponse.json(PostMyPostResponseMock);
+  return HttpResponse.json(PutMyPostResponseMock);
 });
 
 export const deleteMyPostHandler = http.delete<

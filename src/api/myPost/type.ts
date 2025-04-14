@@ -20,8 +20,8 @@ export type GetMyPostError = {
   message: string;
 };
 
-// POST
-export const PostMyPostInputSchema = z.object({
+// PUT
+export const PutMyPostInputSchema = z.object({
   title: z.string().min(1, "1文字以上で入力してください"),
   description: z.string().nullable(),
   body: z.string().nullable(),
@@ -31,15 +31,15 @@ export const PostMyPostInputSchema = z.object({
     .nullable(),
 });
 
-export type PostMyPostInput = z.infer<typeof PostMyPostInputSchema>;
+export type PutMyPostInput = z.infer<typeof PutMyPostInputSchema>;
 
-export type PostMyPostRequest = PostMyPostInput;
+export type PutMyPostRequest = PutMyPostInput;
 
-export type PostMyPostResponse = {
+export type PutMyPostResponse = {
   id: number;
 };
 
-export type PostMyPostError = {
+export type PutMyPostError = {
   message: string;
 };
 
