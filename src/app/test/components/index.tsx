@@ -14,6 +14,7 @@ import {
   deleteMyPost,
 } from "@/api/myPost";
 import { getMyPosts, GetMyPostsParams } from "@/api/myPosts";
+import { getMyProfile } from "@/api/myProfile";
 
 const PostLikeRequestBase: PostLikeRequest = {
   postId: 10,
@@ -151,6 +152,15 @@ export const TestComponent = () => {
     }
   };
 
+  const handleGetMyProfile = async (num: number) => {
+    try {
+      const data = await getMyProfile({ id: num });
+      console.log(data.id);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div>
       <div>
@@ -201,6 +211,15 @@ export const TestComponent = () => {
         <button onClick={() => handleGetMyPosts(10)}>Get MyPosts</button>
         <button onClick={() => handleGetMyPosts(404)}>Get MyPosts 404</button>
         <button onClick={() => handleGetMyPosts(503)}>Get MyPosts 503</button>
+      </div>
+      <div>
+        <button onClick={() => handleGetMyProfile(10)}>Get MyProfile</button>
+        <button onClick={() => handleGetMyProfile(404)}>
+          Get MyProfile 404
+        </button>
+        <button onClick={() => handleGetMyProfile(503)}>
+          Get MyProfile 503
+        </button>
       </div>
     </div>
   );
