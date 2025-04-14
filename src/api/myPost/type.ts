@@ -42,3 +42,16 @@ export type PostMyPostResponse = {
 export type PostMyPostError = {
   message: string;
 };
+
+// DELETE
+export type DeleteMyPostRequest = {
+  id: number;
+};
+
+export type DeleteMyPostResponse = {
+  id: number;
+};
+
+export type DeleteMyPostError = {
+  message: string;
+};

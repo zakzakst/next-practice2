@@ -6,8 +6,13 @@ import {
   PostMyPostRequest,
   PostMyPostResponse,
   PostMyPostError,
+  DeleteMyPostRequest,
+  DeleteMyPostResponse,
+  DeleteMyPostError,
 } from "./type";
 
+// TODO: パスでIDを渡す方法にする
+// https://github.com/frontend-testing-book/nextjs/blob/main/src/services/client/MyPost/index.ts#L4
 const path = () => host("/my-post");
 
 export const getMyPost = async (
@@ -45,11 +50,30 @@ export const postMyPost = async (
       body: JSON.stringify(request),
     });
     if (!res.ok) {
-      // TODO: この辺の処理自信ない。。
       const errorData: PostMyPostError = await res.json();
       throw new Error(errorData.message || "エラーが発生しました");
     }
     const data: PostMyPostResponse = await res.json();
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const deleteMyPost = async (
+  request: DeleteMyPostRequest
+): Promise<DeleteMyPostResponse> => {
+  try {
+    const res = await fetch(path(), {
+      method: "DELETE",
+      headers: defaultHeaders,
+      body: JSON.stringify(request),
+    });
+    if (!res.ok) {
+      const errorData: DeleteMyPostError = await res.json();
+      throw new Error(errorData.message || "エラーが発生しました");
+    }
+    const data: DeleteMyPostResponse = await res.json();
     return data;
   } catch (err) {
     throw err;
