@@ -7,6 +7,7 @@ import { getPostHandler } from "./post";
 import { getPostsHandler } from "./posts";
 import {
   getMyPostHandler,
+  postMyPostHandler,
   putMyPostHandler,
   deleteMyPostHandler,
 } from "./myPost";
@@ -17,6 +18,7 @@ export const handlers: RequestHandler[] = [
   getPostHandler,
   getPostsHandler,
   getMyPostHandler,
+  postMyPostHandler,
   putMyPostHandler,
   deleteMyPostHandler,
 ];
