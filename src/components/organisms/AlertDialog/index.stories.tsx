@@ -1,27 +1,20 @@
-import { Args, PartialStoryFn } from "@storybook/csf";
+import { Args, PartialStoryFn, DecoratorFunction } from "@storybook/csf";
 import type { Meta, StoryObj, ReactRenderer } from "@storybook/react";
 import { AlertDialog, AlertDialogProvider } from ".";
 import { AlertDialogState } from "./AlertDialogContext";
 
-// TODO: contextとの連携の仕方勉強する。アロー関数で指定する方法調べる
-// const createDecorator = (defaultState?: Partial<AlertDialogState>) => {
-//   const Decorator = (Story: PartialStoryFn<ReactRenderer, Args>) => {
-//     <AlertDialogProvider defaultState={{...defaultState, isShown: true}}>
-//       <Story />
-//     </AlertDialogProvider>
-//   }
-//   return Decorator
-// }
-
-function createDecorator(defaultState?: Partial<AlertDialogState>) {
-  return function Decorator(Story: PartialStoryFn<ReactRenderer, Args>) {
+const createDecorator = (
+  defaultState?: Partial<AlertDialogState>
+): DecoratorFunction<ReactRenderer, Args> => {
+  const Decorator = (Story: PartialStoryFn<ReactRenderer, Args>) => {
     return (
       <AlertDialogProvider defaultState={{ ...defaultState, isShown: true }}>
         <Story />
       </AlertDialogProvider>
     );
   };
-}
+  return Decorator;
+};
 
 const meta = {
   title: "Organisms/AlertDialog",
