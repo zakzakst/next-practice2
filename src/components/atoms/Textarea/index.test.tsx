@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { Textarea } from ".";
+import { Textarea } from "./";
 
 test("[role='textbox']", () => {
   render(<Textarea />);

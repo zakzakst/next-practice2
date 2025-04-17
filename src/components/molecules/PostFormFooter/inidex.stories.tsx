@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { PostFormFooter } from ".";
+import { PostFormFooter } from "./";
 import { PostMyPostInput } from "@/api/myPost";
 import { useForm } from "react-hook-form";
 

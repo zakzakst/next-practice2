@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { SelectFilterOption } from ".";
+import { SelectFilterOption } from "./";
 
 const meta = {
   title: "Molecules/SelectFilterOption",

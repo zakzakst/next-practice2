@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ContentFooter } from ".";
+import { ContentFooter } from "./";
 
 const meta = {
   title: "Molecules/ContentFooter",

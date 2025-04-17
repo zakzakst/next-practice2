@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ContentHeader } from ".";
+import { ContentHeader } from "./";
 
 const meta = {
   title: "Molecules/ContentHeader",

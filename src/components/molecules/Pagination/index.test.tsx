@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 // TODO: router絡むところきちんとやる
 // import userEvent from "@testing-library/user-event";
 // import mockRouter from "next-router-mock";
-import { Pagination } from ".";
+import { Pagination } from "./";
 
 // const user = userEvent.setup();
 
