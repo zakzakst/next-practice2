@@ -13,6 +13,12 @@ import {
   DeleteMyPostResponse,
   DeleteMyPostError,
 } from "./type";
+import {
+  GetMyPostResponseMock,
+  PostMyPostResponseMock,
+  PutMyPostResponseMock,
+  DeleteMyPostResponseMock,
+} from "@/mocks/myPost";
 
 // TODO: パスでIDを渡す方法にする
 // https://github.com/frontend-testing-book/nextjs/blob/main/src/services/client/MyPost/index.ts#L4
@@ -21,6 +27,8 @@ const path = () => host("/my-post");
 export const getMyPost = async (
   params: GetMyPostParams
 ): Promise<GetMyPostResponse> => {
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+    return GetMyPostResponseMock;
   try {
     const query = new URLSearchParams(
       Object.entries(params).reduce((acc, [key, value]) => {
@@ -46,6 +54,8 @@ export const getMyPost = async (
 export const postMyPost = async (
   request: PostMyPostRequest
 ): Promise<PostMyPostResponse> => {
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+    return PostMyPostResponseMock;
   try {
     const res = await fetch(path(), {
       method: "POST",
@@ -66,6 +76,8 @@ export const postMyPost = async (
 export const putMyPost = async (
   request: PutMyPostRequest
 ): Promise<PutMyPostResponse> => {
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+    return PutMyPostResponseMock;
   try {
     const res = await fetch(path(), {
       method: "PUT",
@@ -86,6 +98,8 @@ export const putMyPost = async (
 export const deleteMyPost = async (
   request: DeleteMyPostRequest
 ): Promise<DeleteMyPostResponse> => {
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+    return DeleteMyPostResponseMock;
   try {
     const res = await fetch(path(), {
       method: "DELETE",

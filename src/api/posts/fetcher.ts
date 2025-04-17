@@ -1,11 +1,14 @@
 import { defaultHeaders, host } from "..";
 import { GetPostsParams, GetPostsResponse, GetPostsError } from "./type";
+import { GetPostsResponseMock } from "@/mocks/posts";
 
 const path = () => host("/posts");
 
 export const getPosts = async (
   params: GetPostsParams
 ): Promise<GetPostsResponse> => {
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+    return GetPostsResponseMock;
   try {
     const query = new URLSearchParams(
       Object.entries(params).reduce((acc, [key, value]) => {

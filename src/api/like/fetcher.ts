@@ -1,11 +1,14 @@
 import { defaultHeaders, host } from "..";
 import { PostLikeRequest, PostLikeResponse, PostLikeError } from "./type";
+import { PostLikeResponseMock } from "@/mocks/like";
 
 const path = () => host("/like");
 
 export const postLike = async (
   request: PostLikeRequest
 ): Promise<PostLikeResponse> => {
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+    return PostLikeResponseMock;
   try {
     const res = await fetch(path(), {
       method: "POST",

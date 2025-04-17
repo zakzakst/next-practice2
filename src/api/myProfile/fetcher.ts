@@ -7,12 +7,18 @@ import {
   PutMyProfileResponse,
   PutMyProfileError,
 } from "./type";
+import {
+  GetMyProfileResponseMock,
+  PutMyProfileResponseMock,
+} from "@/mocks/myProfile";
 
 const path = () => host("/my-profile");
 
 export const getMyProfile = async (
   params: GetMyProfileParams
 ): Promise<GetMyProfileResponse> => {
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+    return GetMyProfileResponseMock;
   try {
     const query = new URLSearchParams(
       Object.entries(params).reduce((acc, [key, value]) => {
@@ -38,6 +44,8 @@ export const getMyProfile = async (
 export const putMyProfile = async (
   request: PutMyProfileRequest
 ): Promise<PutMyProfileResponse> => {
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+    return PutMyProfileResponseMock;
   try {
     const res = await fetch(path(), {
       method: "PUT",
