@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Combobox } from ".";
+import { Combobox } from "./";
 
 const meta = {
   title: "Molecules/Combobox",

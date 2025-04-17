@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { TextboxWithError } from ".";
+import { TextboxWithError } from "./";
 
 const meta = {
   title: "Molecules/TextboxWithError",

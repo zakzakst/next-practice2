@@ -1,6 +1,6 @@
 import { Args, PartialStoryFn, DecoratorFunction } from "@storybook/csf";
 import type { Meta, StoryObj, ReactRenderer } from "@storybook/react";
-import { AlertDialog, AlertDialogProvider } from ".";
+import { AlertDialog, AlertDialogProvider } from "./";
 import { AlertDialogState } from "./AlertDialogContext";
 
 const createDecorator = (

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { Textbox } from ".";
+import { Textbox } from "./";
 
 test("[role='textbox']", () => {
   render(<Textbox />);

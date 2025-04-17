@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { AnchorButton } from ".";
+import { AnchorButton } from "./";
 
 test("[role='link']", () => {
   render(<AnchorButton href="#">test</AnchorButton>);
