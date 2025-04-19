@@ -14,6 +14,7 @@ import {
   PutMyPostRequest,
   deleteMyPost,
 } from "@/api/myPost";
+import { getMyPost2 } from "@/api/myPost2";
 import { getMyPosts, GetMyPostsParams } from "@/api/myPosts";
 import {
   getMyProfile,
@@ -166,6 +167,15 @@ export const TestComponent = () => {
     }
   };
 
+  const handleGetMyPost2 = async (num: number) => {
+    try {
+      const data = await getMyPost2(num);
+      console.log(data.id);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const handleGetMyPosts = async (num: number) => {
     try {
       const data = await getMyPosts({ ...GetMyPostsParamsBase, page: num });
@@ -244,6 +254,11 @@ export const TestComponent = () => {
         <button onClick={() => handleDeleteMyPost(503)}>
           Delete MyPost 503
         </button>
+      </div>
+      <div>
+        <button onClick={() => handleGetMyPost2(10)}>Get MyPost2</button>
+        <button onClick={() => handleGetMyPost2(404)}>Get MyPost2 404</button>
+        <button onClick={() => handleGetMyPost2(503)}>Get MyPost2 503</button>
       </div>
       <div>
         <button onClick={() => handleGetMyPosts(10)}>Get MyPosts</button>
