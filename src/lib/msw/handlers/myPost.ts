@@ -34,6 +34,7 @@ export const getMyPostHandler = http.get<
   GetMyPostResponse | GetMyPostError
 >(url, async ({ request }) => {
   // TODO: 理想としてはGetMyPostParamsを絡めて型指定したい
+  // get("id")のidをPathParamsのkeyの内の一つみたいな指定する？
   const url = new URL(request.url);
   const id = url.searchParams.get("id");
   console.log(`id: ${id}`);
