@@ -1,4 +1,4 @@
-import { GetMyProfileResponse } from "@/api/myProfile";
+import { GetMyProfileParams, GetMyProfileResponse } from "@/api/myProfile";
 import { createContext } from "react";
 
 export type LoginUserInfoState = {
@@ -17,5 +17,7 @@ export const LoginUserInfoStateContext =
   createContext<LoginUserInfoState>(defaultState);
 
 export const LoginUserInfoActionContext = createContext({
-  updateProfile: {} as () => Promise<GetMyProfileResponse>,
+  updateProfile: {} as (
+    params: GetMyProfileParams
+  ) => Promise<GetMyProfileResponse>,
 });
