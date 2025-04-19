@@ -2,6 +2,7 @@
 
 import { postLike, PostLikeRequest } from "@/api/like";
 import { postLogin, PostLoginRequest } from "@/api/login";
+import { postLogout } from "@/api/logout";
 import { getPost } from "@/api/post";
 import { getPosts, GetPostsParams } from "@/api/posts";
 import {
@@ -86,6 +87,15 @@ export const TestComponent = () => {
         password: `password${num}`,
       });
       console.log(data.name);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handlePostLogout = async () => {
+    try {
+      const data = await postLogout();
+      console.log(data.message);
     } catch (err) {
       console.error(err);
     }
@@ -197,6 +207,9 @@ export const TestComponent = () => {
         <button onClick={() => handlePostLogin(10)}>Login</button>
         <button onClick={() => handlePostLogin(404)}>Login 404</button>
         <button onClick={() => handlePostLogin(503)}>Login 503</button>
+      </div>
+      <div>
+        <button onClick={() => handlePostLogout()}>Logout</button>
       </div>
       <div>
         <button onClick={() => handleGetPost(10)}>Get Post</button>

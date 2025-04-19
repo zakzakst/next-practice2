@@ -3,6 +3,7 @@
 import type { RequestHandler } from "msw";
 import { postLikeHandler } from "./like";
 import { postLoginHandler } from "./login";
+import { postLogoutHandler } from "./logout";
 import { getPostHandler } from "./post";
 import { getPostsHandler } from "./posts";
 import {
@@ -17,6 +18,7 @@ import { getMyProfileHandler, putMyProfileHandler } from "./myProfile";
 export const handlers: RequestHandler[] = [
   postLikeHandler,
   postLoginHandler,
+  postLogoutHandler,
   getPostHandler,
   getPostsHandler,
   getMyPostHandler,
