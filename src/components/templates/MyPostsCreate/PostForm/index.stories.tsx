@@ -1,11 +1,7 @@
 import { PCStory } from "@/tests/storybook";
-// import { expect } from "@storybook/jest";
+import { expect } from "@storybook/jest";
 import type { Meta, StoryObj } from "@storybook/react";
-import {
-  userEvent as user,
-  // waitFor,
-  within,
-} from "@storybook/testing-library";
+import { userEvent as user, waitFor, within } from "@storybook/testing-library";
 import { PostForm } from "./";
 
 const meta = {
@@ -40,10 +36,10 @@ export const FailedSaveAsDraft: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await user.click(canvas.getByRole("button", { name: "下書き保存する" }));
-    // const textbox = canvas.getByRole("textbox", { name: "記事タイトル" });
-    // await waitFor(() =>
-    //   expect(textbox).toHaveAccessibleErrorMessage("1文字以上入力してください")
-    // );
+    const textbox = canvas.getByRole("textbox", { name: "記事タイトル" });
+    await waitFor(() =>
+      expect(textbox).toHaveAccessibleErrorMessage("1文字以上入力してください")
+    );
   },
 };
 
@@ -55,8 +51,8 @@ export const SavePublish: Story = {
       "私の技術記事"
     );
     await user.click(canvas.getByRole("switch", { name: "公開ステータス" }));
-    // await expect(
-    //   canvas.getByRole("button", { name: "記事を公開する" })
-    // ).toBeInTheDocument();
+    await expect(
+      canvas.getByRole("button", { name: "記事を公開する" })
+    ).toBeInTheDocument();
   },
 };
