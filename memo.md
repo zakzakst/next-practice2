@@ -7,6 +7,7 @@
 - react-markdown の部分が jest でエラーが出るので対応方法調べる
 - react-use の便利な機能調べる
 - 画像アップロード周り
+- react-hook-form 利用のコンポーネント分割
 
 ### できなかったこと（済）
 
