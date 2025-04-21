@@ -8,6 +8,8 @@
 - react-use の便利な機能調べる
 - 画像アップロード周り
 - react-hook-form 利用のコンポーネント分割
+- useRouter の router.push の使い方調べる
+- storybook での next/navigation の searchParams.get のエラー修正
 
 ### できなかったこと（済）
 
