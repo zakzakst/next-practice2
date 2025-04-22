@@ -2,15 +2,15 @@ import { defaultHeaders, host } from "..";
 import { PostLoginRequest, PostLoginResponse, PostLoginError } from "./type";
 import { PostLoginResponseMock } from "@/mocks/login";
 
-const path = () => host("/login");
+const url = host("/login");
 
 export const postLogin = async (
   request: PostLoginRequest
 ): Promise<PostLoginResponse> => {
-  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_MOCK === "false")
     return PostLoginResponseMock;
   try {
-    const res = await fetch(path(), {
+    const res = await fetch(url, {
       method: "POST",
       headers: defaultHeaders,
       body: JSON.stringify(request),

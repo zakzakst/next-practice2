@@ -2,13 +2,13 @@ import { defaultHeaders, host } from "..";
 import { GetMyPostsParams, GetMyPostsResponse, GetMyPostsError } from "./type";
 import { GetMyPostsResponseMock } from "@/mocks/myPosts";
 
-const path = () => host("/my-posts");
+const url = host("/my-posts");
 
 export const getMyPosts = async (
   // TODO: paramsでまとめた状態でオプショナルなパラメータにデフォルト値を設定する方法を調べる
   params: GetMyPostsParams
 ): Promise<GetMyPostsResponse> => {
-  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_MOCK === "false")
     return GetMyPostsResponseMock;
   try {
     const query = new URLSearchParams(
@@ -17,7 +17,7 @@ export const getMyPosts = async (
         return acc;
       }, {} as Record<string, string>)
     );
-    const res = await fetch(`${path()}?${query.toString()}`, {
+    const res = await fetch(`${url}?${query.toString()}`, {
       method: "GET",
       headers: defaultHeaders,
     });

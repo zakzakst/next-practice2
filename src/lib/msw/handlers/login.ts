@@ -5,8 +5,9 @@ import {
   PostLoginError,
 } from "@/api/login";
 import { PostLoginResponseMock, PostLoginErrorMock } from "@/mocks/login";
+import { host } from "@/api";
 
-const url = "http://localhost:3000/api/login";
+const url = host("/login");
 
 // NOTE: このHandlerではPathParamsの部分使わなかったけど、他で利用する場面あると思うので覚えておく
 export const postLoginHandler = http.post<

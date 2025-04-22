@@ -1,12 +1,13 @@
 import { http, HttpResponse } from "msw";
 import { GetMyPost2Response, GetMyPost2Error } from "@/api/myPost2";
 import { GetMyPost2ResponseMock, GetMyPost2ErrorMock } from "@/mocks/myPost2";
+import { host } from "@/api";
 
 type GetMyPost2Params = {
   id: string;
 };
 
-const url = "http://localhost:3000/api/my-post2/:id";
+const url = host("/my-post2/:id");
 
 export const getMyPost2Handler = http.get<
   GetMyPost2Params,

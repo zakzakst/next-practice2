@@ -23,10 +23,9 @@ import {
   DeleteMyPostResponseMock,
   DeleteMyPostErrorMock,
 } from "@/mocks/myPost";
+import { host } from "@/api";
 
-// TODO: PathParamsでのIDを受け取る
-// https://mswjs.io/docs/best-practices/typescript/#http-handlers
-const url = "http://localhost:3000/api/my-post";
+const url = host("/my-post");
 
 export const getMyPostHandler = http.get<
   PathParams,

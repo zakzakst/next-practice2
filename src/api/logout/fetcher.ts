@@ -2,13 +2,13 @@ import { defaultHeaders, host } from "..";
 import { PostLogoutResponseMock } from "@/mocks/logout";
 import { PostLogoutResponse, PostLogoutError } from "./type";
 
-const path = () => host("/logout");
+const url = host("/logout");
 
 export const postLogout = async (): Promise<PostLogoutResponse> => {
-  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_MOCK === "false")
     return PostLogoutResponseMock;
   try {
-    const res = await fetch(path(), {
+    const res = await fetch(url, {
       method: "POST",
       headers: defaultHeaders,
     });

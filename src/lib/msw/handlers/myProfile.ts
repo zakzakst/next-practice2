@@ -13,10 +13,10 @@ import {
   PutMyProfileResponseMock,
   PutMyProfileErrorMock,
 } from "@/mocks/myProfile";
+import { host } from "@/api";
 
-const url = "http://localhost:3000/api/my-profile";
+const url = host("/my-profile");
 
-// NOTE: このHandlerではPathParamsの部分使わなかったけど、他で利用する場面あると思うので覚えておく
 export const getMyProfileHandler = http.get<
   PathParams,
   undefined,

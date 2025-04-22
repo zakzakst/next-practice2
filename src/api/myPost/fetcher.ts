@@ -22,12 +22,12 @@ import {
 
 // TODO: パスでIDを渡す方法にする
 // https://github.com/frontend-testing-book/nextjs/blob/main/src/services/client/MyPost/index.ts#L4
-const path = () => host("/my-post");
+const url = host("/my-post");
 
 export const getMyPost = async (
   params: GetMyPostParams
 ): Promise<GetMyPostResponse> => {
-  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_MOCK === "false")
     return GetMyPostResponseMock;
   try {
     const query = new URLSearchParams(
@@ -36,7 +36,7 @@ export const getMyPost = async (
         return acc;
       }, {} as Record<string, string>)
     );
-    const res = await fetch(`${path()}?${query.toString()}`, {
+    const res = await fetch(`${url}?${query.toString()}`, {
       method: "GET",
       headers: defaultHeaders,
     });
@@ -54,10 +54,10 @@ export const getMyPost = async (
 export const postMyPost = async (
   request: PostMyPostRequest
 ): Promise<PostMyPostResponse> => {
-  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_MOCK === "false")
     return PostMyPostResponseMock;
   try {
-    const res = await fetch(path(), {
+    const res = await fetch(url, {
       method: "POST",
       headers: defaultHeaders,
       body: JSON.stringify(request),
@@ -76,10 +76,10 @@ export const postMyPost = async (
 export const putMyPost = async (
   request: PutMyPostRequest
 ): Promise<PutMyPostResponse> => {
-  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_MOCK === "false")
     return PutMyPostResponseMock;
   try {
-    const res = await fetch(path(), {
+    const res = await fetch(url, {
       method: "PUT",
       headers: defaultHeaders,
       body: JSON.stringify(request),
@@ -98,10 +98,10 @@ export const putMyPost = async (
 export const deleteMyPost = async (
   request: DeleteMyPostRequest
 ): Promise<DeleteMyPostResponse> => {
-  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_MOCK === "false")
     return DeleteMyPostResponseMock;
   try {
-    const res = await fetch(path(), {
+    const res = await fetch(url, {
       method: "DELETE",
       headers: defaultHeaders,
       body: JSON.stringify(request),
