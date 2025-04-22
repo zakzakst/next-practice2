@@ -2,15 +2,15 @@ import { defaultHeaders, host } from "..";
 import { PostLikeRequest, PostLikeResponse, PostLikeError } from "./type";
 import { PostLikeResponseMock } from "@/mocks/like";
 
-const path = () => host("/like");
+const url = host("/like");
 
 export const postLike = async (
   request: PostLikeRequest
 ): Promise<PostLikeResponse> => {
-  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_MOCK === "false")
     return PostLikeResponseMock;
   try {
-    const res = await fetch(path(), {
+    const res = await fetch(url, {
       method: "POST",
       headers: defaultHeaders,
       body: JSON.stringify(request),

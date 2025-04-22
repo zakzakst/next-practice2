@@ -12,12 +12,12 @@ import {
   PutMyProfileResponseMock,
 } from "@/mocks/myProfile";
 
-const path = () => host("/my-profile");
+const url = host("/my-profile");
 
 export const getMyProfile = async (
   params: GetMyProfileParams
 ): Promise<GetMyProfileResponse> => {
-  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_MOCK === "false")
     return GetMyProfileResponseMock;
   try {
     const query = new URLSearchParams(
@@ -26,7 +26,7 @@ export const getMyProfile = async (
         return acc;
       }, {} as Record<string, string>)
     );
-    const res = await fetch(`${path()}?${query.toString()}`, {
+    const res = await fetch(`${url}?${query.toString()}`, {
       method: "GET",
       headers: defaultHeaders,
     });
@@ -44,10 +44,10 @@ export const getMyProfile = async (
 export const putMyProfile = async (
   request: PutMyProfileRequest
 ): Promise<PutMyProfileResponse> => {
-  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_MOCK === "false")
     return PutMyProfileResponseMock;
   try {
-    const res = await fetch(path(), {
+    const res = await fetch(url, {
       method: "PUT",
       headers: defaultHeaders,
       body: JSON.stringify(request),

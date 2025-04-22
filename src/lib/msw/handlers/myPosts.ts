@@ -5,10 +5,10 @@ import {
   GetMyPostsError,
 } from "@/api/myPosts";
 import { GetMyPostsResponseMock, GetMyPostsErrorMock } from "@/mocks/myPosts";
+import { host } from "@/api";
 
-const url = "http://localhost:3000/api/my-posts";
+const url = host("/my-posts");
 
-// NOTE: このHandlerではPathParamsの部分使わなかったけど、他で利用する場面あると思うので覚えておく
 export const getMyPostsHandler = http.get<
   PathParams,
   undefined,

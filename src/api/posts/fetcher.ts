@@ -2,12 +2,12 @@ import { defaultHeaders, host } from "..";
 import { GetPostsParams, GetPostsResponse, GetPostsError } from "./type";
 import { GetPostsResponseMock } from "@/mocks/posts";
 
-const path = () => host("/posts");
+const url = host("/posts");
 
 export const getPosts = async (
   params: GetPostsParams
 ): Promise<GetPostsResponse> => {
-  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_API === "false")
+  if (process.env.NEXT_PUBLIC_FEATURE_ABLE_MOCK === "false")
     return GetPostsResponseMock;
   try {
     const query = new URLSearchParams(
@@ -16,7 +16,7 @@ export const getPosts = async (
         return acc;
       }, {} as Record<string, string>)
     );
-    const res = await fetch(`${path()}?${query.toString()}`, {
+    const res = await fetch(`${url}?${query.toString()}`, {
       method: "GET",
       headers: defaultHeaders,
     });

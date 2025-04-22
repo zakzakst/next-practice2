@@ -1,8 +1,9 @@
 import { http, HttpResponse, PathParams } from "msw";
 import { PostLikeRequest, PostLikeResponse, PostLikeError } from "@/api/like";
 import { PostLikeResponseMock, PostLikeErrorMock } from "@/mocks/like";
+import { host } from "@/api";
 
-const url = "http://localhost:3000/api/like";
+const url = host("/like");
 
 // NOTE: このHandlerではPathParamsの部分使わなかったけど、他で利用する場面あると思うので覚えておく
 export const postLikeHandler = http.post<
