@@ -5,6 +5,8 @@
 - params でまとめた状態でオプショナルなパラメータにデフォルト値を設定する方法を調べる
 - next-router-mock の使い方調べる（storybook の useRouter でエラーが出てしまう）
 - react-use の便利な機能調べる
+  - https://www.npmjs.com/package/react-use
+  - https://qiita.com/st_12/items/c4e4c1237e97c1b6a657
 - 画像アップロード周り
 - react-hook-form 利用のコンポーネント分割
 - storybook での next/navigation の searchParams.get のエラー修正
