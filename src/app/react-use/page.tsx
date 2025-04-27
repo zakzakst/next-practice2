@@ -1,3 +1,7 @@
+// https://github.com/streamich/react-use/blob/HEAD/docs/useHover.md
+// https://github.com/streamich/react-use/blob/HEAD/docs/useHash.md
+// https://github.com/streamich/react-use/blob/HEAD/docs/useIntersection.md
+
 const Page = () => {
   return (
     <div>
