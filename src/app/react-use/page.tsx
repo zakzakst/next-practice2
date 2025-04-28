@@ -1,11 +1,12 @@
-// https://github.com/streamich/react-use/blob/HEAD/docs/useHover.md
+"use client";
 // https://github.com/streamich/react-use/blob/HEAD/docs/useHash.md
 // https://github.com/streamich/react-use/blob/HEAD/docs/useIntersection.md
+import { UseHoverTest } from "./components/UseHoverTest";
 
 const Page = () => {
   return (
     <div>
-      <p>react-use practice</p>
+      <UseHoverTest />
     </div>
   );
 };
