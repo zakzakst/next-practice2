@@ -1,13 +1,15 @@
 "use client";
-// https://github.com/streamich/react-use/blob/HEAD/docs/useIntersection.md
+// https://www.npmjs.com/package/react-use
 import { UseHoverTest } from "./components/UseHoverTest";
-import { UseHashTest } from "./components/UseHashTest";
+// import { UseHashTest } from "./components/UseHashTest";
+import { UseIntersectionTest } from "./components/UseIntersectionTest";
 
 const Page = () => {
   return (
     <div>
       <UseHoverTest />
-      <UseHashTest />
+      {/* <UseHashTest /> */}
+      <UseIntersectionTest />
     </div>
   );
 };
