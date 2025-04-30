@@ -3,6 +3,7 @@
 import { UseHoverTest } from "./components/UseHoverTest";
 // import { UseHashTest } from "./components/UseHashTest";
 import { UseIntersectionTest } from "./components/UseIntersectionTest";
+import { UseKeyTest } from "./components/UseKeyTest";
 
 const Page = () => {
   return (
@@ -10,6 +11,7 @@ const Page = () => {
       <UseHoverTest />
       {/* <UseHashTest /> */}
       <UseIntersectionTest />
+      <UseKeyTest />
     </div>
   );
 };
