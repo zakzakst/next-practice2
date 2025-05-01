@@ -5,6 +5,7 @@ import { UseHoverTest } from "./components/UseHoverTest";
 import { UseIntersectionTest } from "./components/UseIntersectionTest";
 import { UseKeyTest } from "./components/UseKeyTest";
 import { UseKeyPressEventTest } from "./components/UseKeyPressEventTest";
+// import { UseMediaTest } from "./components/UseMediaTest";
 
 const Page = () => {
   return (
@@ -14,6 +15,7 @@ const Page = () => {
       <UseIntersectionTest />
       <UseKeyTest />
       <UseKeyPressEventTest />
+      {/* <UseMediaTest /> */}
     </div>
   );
 };
