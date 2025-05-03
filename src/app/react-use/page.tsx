@@ -18,6 +18,8 @@ import { UseCopyToClipboardTest } from "./components/UseCopyToClipboardTest";
 // import { UseMediaTest } from "./components/UseMediaTest";
 // import { UseScrollTest } from "./components/UseScrollTest";
 // import { UseCookieTest } from "./components/UseCookieTest";
+// import { UseLocalStorageTest } from "./components/UseLocalStorageTest";
+// import { UseSessionStorageTest } from "./components/UseSessionStorageTest";
 
 const Page = () => {
   return (
@@ -42,6 +44,8 @@ const Page = () => {
       {/* <UseMediaTest /> */}
       {/* <UseScrollTest /> */}
       {/* <UseCookieTest /> */}
+      {/* <UseLocalStorageTest /> */}
+      {/* <UseSessionStorageTest /> */}
       {/* ▲▲▲ 上手く動かなかった ▲▲▲ */}
     </div>
   );
