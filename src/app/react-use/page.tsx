@@ -1,35 +1,48 @@
 "use client";
 // https://www.npmjs.com/package/react-use
-import { UseHoverTest } from "./components/UseHoverTest";
+// import { UseHoverTest } from "./components/UseHoverTest";
+// import { UseIntersectionTest } from "./components/UseIntersectionTest";
+// import { UseKeyTest } from "./components/UseKeyTest";
+// import { UseKeyPressEventTest } from "./components/UseKeyPressEventTest";
+// import { UseMediaDevicesTest } from "./components/UseMediaDevicesTest";
+// import { UseMouseTest } from "./components/UseMouseTest";
+// import { UseOrientationTest } from "./components/UseOrientationTest";
+// import { UseWindowScrollTest } from "./components/UseWindowScrollTest";
+// import { UseClickAwayTest } from "./components/UseClickAwayTest";
+// import { UseDropAreaTest } from "./components/UseDropAreaTest";
+// import { UseVideoTest } from "./components/UseVideoTest";
+import { UseCopyToClipboardTest } from "./components/UseCopyToClipboardTest";
+
+// 上手く動かなかった
 // import { UseHashTest } from "./components/UseHashTest";
-import { UseIntersectionTest } from "./components/UseIntersectionTest";
-import { UseKeyTest } from "./components/UseKeyTest";
-import { UseKeyPressEventTest } from "./components/UseKeyPressEventTest";
 // import { UseMediaTest } from "./components/UseMediaTest";
-import { UseMediaDevicesTest } from "./components/UseMediaDevicesTest";
-import { UseMouseTest } from "./components/UseMouseTest";
-import { UseOrientationTest } from "./components/UseOrientationTest";
 // import { UseScrollTest } from "./components/UseScrollTest";
-import { UseWindowScrollTest } from "./components/UseWindowScrollTest";
-import { UseClickAwayTest } from "./components/UseClickAwayTest";
-import { UseDropAreaTest } from "./components/UseDropAreaTest";
+// import { UseCookieTest } from "./components/UseCookieTest";
 
 const Page = () => {
   return (
     <div>
+      {/*
       <UseHoverTest />
-      {/* <UseHashTest /> */}
       <UseIntersectionTest />
       <UseKeyTest />
       <UseKeyPressEventTest />
-      {/* <UseMediaTest /> */}
       <UseMediaDevicesTest />
       <UseMouseTest />
       <UseOrientationTest />
-      {/* <UseScrollTest /> */}
       <UseWindowScrollTest />
       <UseClickAwayTest />
       <UseDropAreaTest />
+      <UseVideoTest />
+      */}
+      <UseCopyToClipboardTest />
+
+      {/* ▼▼▼ 上手く動かなかった ▼▼▼ */}
+      {/* <UseHashTest /> */}
+      {/* <UseMediaTest /> */}
+      {/* <UseScrollTest /> */}
+      {/* <UseCookieTest /> */}
+      {/* ▲▲▲ 上手く動かなかった ▲▲▲ */}
     </div>
   );
 };
