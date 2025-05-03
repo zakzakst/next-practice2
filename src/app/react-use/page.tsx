@@ -11,6 +11,8 @@ import { UseMouseTest } from "./components/UseMouseTest";
 import { UseOrientationTest } from "./components/UseOrientationTest";
 // import { UseScrollTest } from "./components/UseScrollTest";
 import { UseWindowScrollTest } from "./components/UseWindowScrollTest";
+import { UseClickAwayTest } from "./components/UseClickAwayTest";
+import { UseDropAreaTest } from "./components/UseDropAreaTest";
 
 const Page = () => {
   return (
@@ -26,6 +28,8 @@ const Page = () => {
       <UseOrientationTest />
       {/* <UseScrollTest /> */}
       <UseWindowScrollTest />
+      <UseClickAwayTest />
+      <UseDropAreaTest />
     </div>
   );
 };
