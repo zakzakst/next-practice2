@@ -1,8 +1,5 @@
 ### できなかったこと
 
-- エラーハンドリング自信ない
-- OrderBy コンポーネントの options と関連付ける
-- params でまとめた状態でオプショナルなパラメータにデフォルト値を設定する方法を調べる
 - next-router-mock の使い方調べる（storybook の useRouter でエラーが出てしまう）
 - 画像アップロード周り
 - react-hook-form 利用のコンポーネント分割
@@ -22,3 +19,6 @@
   - https://qiita.com/st_12/items/c4e4c1237e97c1b6a657
   - 一緒に下記も読む
     https://zenn.dev/kobayang/articles/9145de86b20ba6
+- エラーハンドリング自信ない
+- OrderBy コンポーネントの options と関連付ける
+- params でまとめた状態でオプショナルなパラメータにデフォルト値を設定する方法を調べる
