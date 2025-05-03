@@ -23,3 +23,11 @@ export class AppError<TCode extends string = AppErrorCode> extends Error {
     this.details = details;
   }
 }
+
+// NOTE: こっちのargsの書き方も試してみる
+// constructor(args: { code: TCode; message: string; details?: unknown }) {
+//   super(args.message);
+//   this.code = args.code;
+//   this.details = args.details;
+//   this.name = 'AppError';
+// }
