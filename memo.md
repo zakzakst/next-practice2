@@ -9,6 +9,8 @@
   - https://qiita.com/st_12/items/c4e4c1237e97c1b6a657
   - 一緒に下記も読む
     https://zenn.dev/kobayang/articles/9145de86b20ba6
+- useDropArea 詳しく試す
+  - https://github.com/streamich/react-use/blob/HEAD/docs/useDrop.md
 - 画像アップロード周り
 - react-hook-form 利用のコンポーネント分割
 - storybook での next/navigation の searchParams.get のエラー修正
