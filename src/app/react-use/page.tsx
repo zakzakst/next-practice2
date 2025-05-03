@@ -7,6 +7,7 @@ import { UseKeyTest } from "./components/UseKeyTest";
 import { UseKeyPressEventTest } from "./components/UseKeyPressEventTest";
 // import { UseMediaTest } from "./components/UseMediaTest";
 import { UseMediaDevicesTest } from "./components/UseMediaDevicesTest";
+import { UseMouseTest } from "./components/UseMouseTest";
 
 const Page = () => {
   return (
@@ -18,6 +19,7 @@ const Page = () => {
       <UseKeyPressEventTest />
       {/* <UseMediaTest /> */}
       <UseMediaDevicesTest />
+      <UseMouseTest />
     </div>
   );
 };
