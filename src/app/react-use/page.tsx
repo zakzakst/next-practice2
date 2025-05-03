@@ -8,6 +8,9 @@ import { UseKeyPressEventTest } from "./components/UseKeyPressEventTest";
 // import { UseMediaTest } from "./components/UseMediaTest";
 import { UseMediaDevicesTest } from "./components/UseMediaDevicesTest";
 import { UseMouseTest } from "./components/UseMouseTest";
+import { UseOrientationTest } from "./components/UseOrientationTest";
+// import { UseScrollTest } from "./components/UseScrollTest";
+import { UseWindowScrollTest } from "./components/UseWindowScrollTest";
 
 const Page = () => {
   return (
@@ -20,6 +23,9 @@ const Page = () => {
       {/* <UseMediaTest /> */}
       <UseMediaDevicesTest />
       <UseMouseTest />
+      <UseOrientationTest />
+      {/* <UseScrollTest /> */}
+      <UseWindowScrollTest />
     </div>
   );
 };
