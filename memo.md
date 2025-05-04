@@ -1,9 +1,6 @@
 ### できなかったこと
 
-- next-router-mock の使い方調べる（storybook の useRouter でエラーが出てしまう）
 - 画像アップロード周り
-- react-hook-form 利用のコンポーネント分割
-- storybook での next/navigation の searchParams.get のエラー修正
 - useDropArea 詳しく試す
   - https://github.com/streamich/react-use/blob/HEAD/docs/useDrop.md
 
@@ -22,3 +19,8 @@
 - エラーハンドリング自信ない
 - OrderBy コンポーネントの options と関連付ける
 - params でまとめた状態でオプショナルなパラメータにデフォルト値を設定する方法を調べる
+- react-hook-form 利用のコンポーネント分割
+- next-router-mock の使い方調べる（storybook の useRouter でエラーが出てしまう）
+  ⇒next-router-mock は next/router をモックするためのライブラリなので利用しない
+- storybook での next/navigation の searchParams.get のエラー修正
+  https://storybook.js.org/docs/get-started/frameworks/nextjs#set-nextjsappdirectory-to-true
